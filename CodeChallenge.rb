@@ -39,3 +39,23 @@ def find_it(seq)
 
   end
 end
+
+
+#Your task is to sort a given string. Each word in the string will contain a single number. This number is the position the word should have in the result.
+#Note: Numbers can be from 1 to 9. So 1 will be the first word (not 0).
+#If the input string is empty, return an empty string. The words in the input String will only contain valid consecutive numbers.
+
+def order(words)
+  # your code...
+  warr = words.split(' ')
+  length = (warr.length) - 1
+  nums = (0..9).to_a
+  ans = (0..length).to_a
+  warr.each do |x|
+    x.each_char do |y|
+     ans[(y.to_i) - 1] = x  if nums.include?(y.to_i)
+    end
+  end
+  ans = ans.join(' ')
+  return ans
+end
