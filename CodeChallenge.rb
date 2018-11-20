@@ -59,3 +59,16 @@ def order(words)
   ans = ans.join(' ')
   return ans
 end
+
+
+#Bob is preparing to pass IQ test. The most frequent task in this test is to find out which one of the given numbers differs from the others. Bob observed that one number usually differs from the others in evenness. Help Bob — to check his answers, he needs a program that among the given numbers finds one that is different in evenness, and return a position of this number.
+#! Keep in mind that your task is to help Bob solve a real IQ test, which means indexes of the elements start from 1 (not 0)
+
+def iq_test(numbers)
+  ecounter, ocounter = 0, 0
+  arr = numbers.split(' ').map(&:to_i)
+  arr.each {|x| x.even? ? ecounter += 1 : ocounter += 1  }
+  item = []
+  ecounter > ocounter ? arr.each {|y|  item << y if y.odd?} : arr.each {|y| item << y if y.even?}
+  return answer = arr.find_index(item[0]) + 1
+end
