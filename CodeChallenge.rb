@@ -72,3 +72,11 @@ def iq_test(numbers)
   ecounter > ocounter ? arr.each {|y|  item << y if y.odd?} : arr.each {|y| item << y if y.even?}
   return answer = arr.find_index(item[0]) + 1
 end
+
+
+#In this kata you will create a function that takes a list of non-negative integers and strings and returns a new list with the strings filtered out.
+def filter_list(l)
+  answer = []
+  l.each {|x| answer << x if x.is_a? Integer}
+  return answer
+end
