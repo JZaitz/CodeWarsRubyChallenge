@@ -134,3 +134,23 @@ elsif btotal == gtotal
 end
 
 end
+
+#Write a function called that takes a string of parentheses, and determines if the order of the parentheses is valid. The function should return true if the string is valid, and false if it's invalid.
+def valid_parentheses(string)
+  #your code here
+  count = 0
+  string.each_char {|x| count += 1 if x == ")" || x == "("}
+  return true if count == 0
+
+  for i in 0..(string.length-1)
+    if string[i] == "(" && string[-1] == ")"
+      return true
+    elsif string[i] == "(" && string[-2] == ")" && string[-1] != ")"
+      return true
+    elsif string[-1] == "("
+      return false
+    else
+      return false
+    end
+  end
+end
