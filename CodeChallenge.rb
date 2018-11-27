@@ -143,12 +143,16 @@ def valid_parentheses(string)
   return true if count == 0
 
   for i in 0..(string.length-1)
-    if string[i] == "(" && string[-1] == ")"
-      return true
-    elsif string[i] == "(" && string[-2] == ")" && string[-1] != ")"
-      return true
-    elsif string[-1] == "("
+    if string[-1] == "("
       return false
+    elsif string[i] == "(" && string[-1] == ")"
+      return true
+    elsif string[i] == "(" && string[-1] != ")"
+      lastind = string.length - 2
+      while lastind >= 1
+        return true if string[i] == "(" && string[lastind] == ")"
+        last -= 1
+      end
     else
       return false
     end
