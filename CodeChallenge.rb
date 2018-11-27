@@ -161,18 +161,21 @@ end
 
 #You are given an array (which will have a length of at least 3, but could be very large) containing integers. The array is either entirely comprised of odd integers or entirely comprised of even integers except for a single integer N. Write a method that takes the array as an argument and returns this "outlier" N.
 def find_outlier(integers)
-  evens = []
-  odds = []
+  evens, odds = [], []
   integers.each do |x|
-    if x % 2 == 0
-      evens << x
-    elsif x % 2 != 0
-      odds << x
-    end
+    x % 2 == 0 ? evens << x : odds << x
   end
-  if evens.length > odds.length
-    return odds[0]
-  elsif odds.length > evens.length
-    return evens[0]
-  end
+  evens.length > odds.length ? odds[0] : evens[0]
+end
+
+
+#Complete the function scramble(str1, str2) that returns true if a portion of str1 characters can be rearranged to match str2, otherwise returns false.
+def scramble(s1,s2)
+  arr1 = s1.split('')
+  arr2 = s2.split('')
+  arr3 = []
+  arr2.each { |c| arr3 << c if arr1.include?(c)}
+  arr3.sort! {|x, y| x <=> y}
+  arr2.sort! {|x, y| x <=> y}
+  arr3 == arr2 ? true : false
 end
