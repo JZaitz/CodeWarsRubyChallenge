@@ -179,3 +179,34 @@ def scramble(s1,s2)
   arr2.sort! {|x, y| x <=> y}
   arr3 == arr2 ? true : false
 end
+
+
+def  first_non_repeating_letter(s)
+  # Code go here
+  return "" if s == ""
+  counter = []
+  arr = s.split("")
+  arr.each do |x|
+    return x if arr.count(x) == 1
+      #return x
+    #elsif
+      #return ""
+    #end
+  end
+
+
+#Write a function named firstNonRepeatingLetter† that takes a string input, and returns the first character that is not repeated anywhere in the string.
+
+#For example, if given the input 'stress', the function should return 't', since the letter t only occurs once in the string, and occurs first in the string.
+def  first_non_repeating_letter(s)
+  return "" if s == ""
+  counter = 0
+  arr = s.split("")
+  arr.each do |x|
+    if arr.count(x) == 1
+      counter += 1
+      return x
+    end
+  end
+  return "" if counter == 0
+end
