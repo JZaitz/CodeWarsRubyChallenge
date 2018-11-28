@@ -227,3 +227,22 @@ def digital_root(n)
     return answer
   end
 end
+
+#Example:
+#"56 65 74 100 99 68 86 180 90" ordered by numbers weights becomes: "100 180 90 56 65 74 68 86 99"
+def order_weight(strng)
+    #split to array, split nested array, map totals to_i, assign hash key and values(reduce)
+    #sort hash by value, push into solution and join to a string with a space
+    arr = strng.split(' ')
+    sol, totals = [], []
+    key = {}
+    arr.each {|x| totals << x.split('')}
+    totals.map do |brr|
+      crr = brr.map {|y|  y.to_i}
+      key[crr] = crr.reduce(:+)
+    end
+    key = key.sort_by {|k, v| v}
+    key.each {|b,d| sol << b.join}
+
+    return sol.join(' ')
+end
