@@ -246,3 +246,23 @@ def order_weight(strng)
 
     return sol.join(' ')
 end
+
+#Given a list lst and a number N, create a new list that contains each number of lst at most N times without reordering. For example if N = 2, and the input is [1,2,3,1,2,1,2,3], you take [1,2,3,1,2], drop the next [1,2] since this would lead to 1 and 2 being in the result 3 times, and then take 3, which leads to [1,2,3,1,2,3].
+
+def delete_nth(order,max_e)
+  #your code here
+  counter = Hash.new(0)
+  solution = []
+  order.each {|x| counter[x] += 1}
+  counter.each do |k, v|
+    solution.push(k)
+    v = max_e if v > max_e
+    if v > 1
+      v -= 1
+      v.times do
+        solution.push(k)
+      end
+    end
+  end
+  return solution
+end
