@@ -406,7 +406,7 @@ def rot13(string)
 
 end
 
-#You will be given a number and you will need to return it as a string in Expanded Form. 
+#You will be given a number and you will need to return it as a string in Expanded Form.
 def expanded_form(num)
   # Your code here
   ans = []
@@ -423,4 +423,16 @@ def expanded_form(num)
    end
   end
   return ans.join(" + ")
+end
+
+#A Narcissistic Number is a number which is the sum of its own digits, each raised to the power of the number of digits in a given base. In this Kata, we will restrict ourselves to decimal (base 10).
+def narcissistic?(value)
+  # Code me to return true or false
+  ans = []
+  dig =  value.to_s.length
+  arr = value.to_s.split("")
+  arr.each {|x| ans << x.to_i ** dig}
+  sum = ans.reduce(:+)
+  sum == value ? true : false
+
 end
