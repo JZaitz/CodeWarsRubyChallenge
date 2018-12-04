@@ -405,3 +405,22 @@ def rot13(string)
   return ans
 
 end
+
+#You will be given a number and you will need to return it as a string in Expanded Form. 
+def expanded_form(num)
+  # Your code here
+  ans = []
+  len = num.to_s.length
+  k = ("1" + "0" * len).to_i/10
+ while num > 0
+  if num/k >= 1
+    ans << num/k * k
+    num -= num/k * k
+    k = k / 10
+   elsif num < 10
+    ans << num
+    num -= num
+   end
+  end
+  return ans.join(" + ")
+end
