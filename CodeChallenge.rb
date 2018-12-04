@@ -266,3 +266,142 @@ def delete_nth(order,max_e)
   end
   return solution
 end
+
+#In this kata you have to write a method that folds a given array of integers by the middle x-times.
+def fold_array(array, runs)
+  solution = []
+
+
+  if runs ==1 and array.length == 1
+    solution.push(array[0])
+    return solution
+####################
+  elsif runs == 1
+    if array.length.even?
+      mid = array.length / 2
+      midpoint = array[mid]
+      0.upto(mid-2) do |x|
+        solution[x] = array[x] + array[array.length - (x+1)]
+      end
+      solution.push(array[mid] + array[mid - 1])
+    else
+      mid = array.length / 2
+      midpoint = array[mid]
+      0.upto(mid-1) do |x|
+        solution[x] = array[x] + array[array.length - (x+1)]
+        solution[mid] = midpoint
+      end
+    end
+   return solution
+#######################
+   elsif runs == 2
+    if array.length.even?
+      mid = array.length / 2
+      midpoint = array[mid]
+      0.upto(mid-2) do |x|
+        solution[x] = array[x] + array[array.length - (x+1)]
+      end
+      solution.push(array[mid] + array[mid - 1])
+    else
+      mid = array.length / 2
+      midpoint = array[mid]
+      0.upto(mid-1) do |x|
+        solution[x] = array[x] + array[array.length - (x+1)]
+        solution[mid] = midpoint
+      end
+    end
+    nextrun = solution
+    if nextrun.length.even?
+      mid = nextrun.length / 2
+      midpoint = nextrun[mid]
+      0.upto(mid-2) do |x|
+        solution[x] = nextrun[x] + nextrun[array.length - (x+1)]
+      end
+      solution.push(nextrun[mid] + nextrun[mid - 1])
+    else
+      mid = nextrun.length / 2
+      midpoint = nextrun[mid]
+      0.upto(mid-1) do |x|
+        solution[x] = nextrun[x] + nextrun[nextrun.length - (x+1)]
+        solution[mid] = midpoint
+        nextrun.pop
+      end
+    end
+    return nextrun
+########################
+    elsif runs == 3
+      if array.length.even?
+      mid = array.length / 2
+      midpoint = array[mid]
+      0.upto(mid-2) do |x|
+        solution[x] = array[x] + array[array.length - (x+1)]
+      end
+      solution.push(array[mid] + array[mid - 1])
+    else
+      mid = array.length / 2
+      midpoint = array[mid]
+      0.upto(mid-1) do |x|
+        solution[x] = array[x] + array[array.length - (x+1)]
+        solution[mid] = midpoint
+      end
+    end
+    nextrun = solution
+    if nextrun.length.even?
+      mid = nextrun.length / 2
+      midpoint = nextrun[mid]
+      0.upto(mid-2) do |x|
+        solution[x] = nextrun[x] + nextrun[array.length - (x+1)]
+      end
+      solution.push(nextrun[mid] + nextrun[mid - 1])
+    else
+      mid = nextrun.length / 2
+      midpoint = nextrun[mid]
+      0.upto(mid-1) do |x|
+        solution[x] = nextrun[x] + nextrun[nextrun.length - (x+1)]
+        solution[mid] = midpoint
+        nextrun.pop
+      end
+    end
+    ######
+    mid = nextrun.length / 2
+      midpoint = nextrun[mid]
+      0.upto(mid-1) do |x|
+        solution[x] = nextrun[x] + nextrun[nextrun.length - (x+1)]
+        solution[mid] = midpoint
+        nextrun.pop
+      end
+      return nextrun
+    #return [nextrun[0] + nextrun[1]] if nextrun.length == 2
+
+
+  end
+
+
+
+end
+
+#
+#ROT13 is a simple letter substitution cipher that replaces a letter with the letter 13 letters after it in the alphabet. ROT13 is an example of the Caesar cipher.
+def rot13(string)
+  # Put your code here!
+  ans = ""
+  alph = "abcdefghijklmnopqrstuvwxyz"
+  calph = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+  string.each_char do |x|
+    if alph.include?(x)
+      ind = alph.index(x)
+      newi = ind + 13
+      pos = newi % 26
+      ans << alph[pos]
+    elsif calph.include?(x)
+      ind = calph.index(x)
+      newi = ind + 13
+      pos = newi % 26
+      ans << calph[pos]
+    else
+      ans << x
+    end
+  end
+  return ans
+
+end
