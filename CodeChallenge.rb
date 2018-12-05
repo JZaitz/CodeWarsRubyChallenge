@@ -436,3 +436,31 @@ def narcissistic?(value)
   sum == value ? true : false
 
 end
+
+#Given a string, detect whether or not it is a pangram. Return True if it is, False if not. Ignore numbers and punctuation.
+def panagram?(string)
+  # enter your code here
+  ans, key = [], []
+  alph = ("a".."z").to_a
+  new = string.downcase.split("")
+  new.each {|x| ans.push(x) if alph.include?(x)}
+  alph.each {|c| key.push(c) if ans.include?(c)}
+  key.length == 26 ? true : false
+end
+
+#Given an array (arr) as an argument complete the function countSmileys that should return the total number of smiling faces.
+def count_smileys(arr)
+  #your code here
+  counter = 0
+  nose = ["-","~"]
+  eyes = [":",";"]
+  mouth = [")","D"]
+  arr.each do |x|
+    if eyes.include?(x[0]) and mouth.include?(x[1])
+      counter += 1
+    elsif eyes.include?(x[0]) and nose.include?(x[1]) and mouth.include?(x[2])
+      counter += 1
+    end
+  end
+  return counter
+end
